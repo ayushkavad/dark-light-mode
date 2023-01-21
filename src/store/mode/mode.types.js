@@ -1,0 +1,3 @@
+export const ACTION_TYPE = {
+  SET_CURRENT_MODD: "SET_CURRENT_MODE",
+};

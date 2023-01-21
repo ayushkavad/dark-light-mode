@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Button from "./component/button/button.componenet";
-import { ModeContaxt } from "./contaxt/mode.contaxt";
+
+import { setCurrentMode } from "./store/mode/mode.action";
+import { modeSelector } from "./store/mode/mode.selector";
 
 import "./App.scss";
 
 const App = () => {
-  const { currentMode, setCurrentMode } = useContext(ModeContaxt);
+  const dispatch = useDispatch();
+  const currentMode = useSelector(modeSelector);
 
   const onClickHandler = () => {
-    setCurrentMode(!currentMode);
+    dispatch(setCurrentMode(!currentMode));
   };
 
   return (
