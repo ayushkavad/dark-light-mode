@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import Button from "./component/button/button.componenet";
+import { ModeContaxt } from "./contaxt/mode.contaxt";
 
-function App() {
+import "./App.scss";
+
+const App = () => {
+  const { currentMode, setCurrentMode } = useContext(ModeContaxt);
+
+  const onClickHandler = () => {
+    setCurrentMode(!currentMode);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${currentMode && "light"}`}>
+      <div onClick={onClickHandler}>
+        <Button clickBtn={currentMode} />
+      </div>
+      <h1 className="app__title">Hi I'm Ayush Kavad.</h1>
     </div>
   );
-}
+};
 
 export default App;
